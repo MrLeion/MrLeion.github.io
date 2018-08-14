@@ -62,42 +62,581 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2017/Coder/高仿得到-底部播放器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/08/13/hello-world/" class="article-date">
-  <time datetime="2018-08-13T13:34:24.041Z" itemprop="datePublished">2018-08-13</time>
+    <a href="/2018/08/13/2017/Coder/高仿得到-底部播放器/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/13/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <hr>
+<pre><code>《2017感动中国十大事件》
+
+网贷公司一客户是个孤儿，今年在平台上借了几千块钱买了部iphone X，因为最近手头太紧钱一时还不上来。于是平台找到了他的父母将欠平台的几千块追了回来，而客户也找到了自己的父母，这是个感人的故事～～
+</code></pre><hr>
+<p>好啦，按照惯例，先来看下效果图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-3145150e3b955277.gif?imageMogr2/auto-orient/strip" alt="效果图"></p>
+<p>看到这个效果我的第一反应是用 WindowMananger 去做，但是实现起来发现以下不足：</p>
+<ul>
+<li>WindowManager 会对底部内容进行遮挡；</li>
+<li>部分手机不支持小空间的显示；</li>
+</ul>
+<p>其实最普通的做法当然是在每个 activity 底部放一个这样的布局，但是这种做法显得比较低级。于是果断调查了下其他 app 的实现思路，下面是对自己 copy 思路的记录，期间发现一些比较不错的工具，大家可以使用下；</p>
+<p>这里有朋友可能会考虑反编译看下别人的代码，但是现在很多应用都进行了加固，源代码几乎无法查看(<a href="http://www.jianshu.com/p/a26fa25a93ea" target="_blank" rel="noopener">想知道具体原因欢迎查看我的另一篇文章</a>)因此我们考虑采用其他方式：<br><a href="https://www.zhihu.com/question/36448929" target="_blank" rel="noopener">思路</a></p>
+<p>虽然通过 adb 命令也可以很快查看Android系统当前运行Activity</p>
+<p>’‘’</p>
+<p> adb shell dumpsys activity |grep “mFocusedActivity” </p>
+<p> ‘’‘</p>
+<p> 命令替代工具：</p>
+<p><a href="https://github.com/waylife/DemoCollections/tree/master/ViewDebugHelper" target="_blank" rel="noopener">工具github</a></p>
+<p> 效果图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-b71049d4ec45305e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="网易调研"></p>
+<p>通过 DDMS 我们可以看到页面布局的结构：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-3b395a57c1272929.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="工具使用"></p>
+<p>再通过此方法查看得到验证下自己的想法：每个 Activity 中实现。</p>
+<p>到这里，我们只需要在每一页的 ScrollView 或者 ListView上加上收拾的坚挺判断，那么就可以实现上面的效果了～～</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/13/hello-world/" data-id="cjkt0wjim0000qvxz6gltvv1r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/高仿得到-底部播放器/" data-id="cjkt10w48000fslxzuegaoy5q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2017/Coder/-Andorid-安全攻防战-反编译及加固[Mac版]" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/2017/Coder/-Andorid-安全攻防战-反编译及加固[Mac版]/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/2539684-b7085d0a8f8487a4.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>首先必须得承认如果通过反编译直接窃取别人的劳动成果是有那么点不道德！所以我们一定一定一定要学好反编译，这样我们就可以尽情地窃取别人的劳动成果，并且防止我们自己的技术不被反编译啦(开个玩笑啦，别当真)～～</p>
+<p>好吧，下面单纯从技术的角度一起谈谈我们的android安全攻防大战吧：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-58f9f0249bb6df74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>如上图，迎面向我们走来的是本文的两大重要环节攻与防，也就是我们所说的反编译和混淆加固啦；反编译(攻)一般分为两种情况：</p>
+<ul>
+<li>1.资源反编译，针对喜欢高仿但是不会P图的广大程序员屌丝们；</li>
+<li>2.源代码反编译，可以看看别人的代码和实现手段；</li>
+</ul>
+<p>混淆加固(防)也分为两种手法：</p>
+<ul>
+<li>1.混淆，这种情况比较麻烦，引入第三方还要避免混淆别人的代码，并且混淆后的代码还是可以看得出大致使用的技术和逻辑，所以不推荐使用；</li>
+<li>2.加固，360加固全部自动化打包，但是现在应用商店似乎对加固软件进行了限制，比如之前工作上传百度应用市场的时候居然提示我们要用百度加固～～，baidu，坑爹！</li>
+</ul>
+<h3 id="赛前准备"><a href="#赛前准备" class="headerlink" title="赛前准备"></a>赛前准备</h3><p>工欲善其事，必先利其器。选择一个好的工具可以使我们的工作:</p>
+<ul>
+<li><p><a href="https://sourceforge.net/projects/dex2jar/files/?source=navbar" target="_blank" rel="noopener">dex2jar</a></p>
+</li>
+<li><p><a href="http://jd.benow.ca/" target="_blank" rel="noopener">JD-GUI</a></p>
+</li>
+<li><p><a href="https://ibotpeaches.github.io/Apktool/install/" target="_blank" rel="noopener">apktool</a></p>
+</li>
+<li><p><a href="https://www.iterm2.com/" target="_blank" rel="noopener">iTerm命令行工具</a></p>
+</li>
+<li><p><a href="http://jiagu.360.cn/qcmshtml/details.html#helper" target="_blank" rel="noopener">360加固工具</a></p>
+</li>
+<li><p><a href="http://android.myapp.com/myapp/detail.htm?apkName=com.gmail.heagoo.apkeditor.pro" target="_blank" rel="noopener">Apk编辑器</a> </p>
+</li>
+</ul>
+<blockquote>
+<p>问题一：apktool安装配置，作为mac盲的我展示下零基础怎么配置以及遇到的一些问题吧：</p>
+</blockquote>
+<ul>
+<li>1.右键保存链接为 apktool 所有格式文本<a href="https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/osx/apktool" target="_blank" rel="noopener">wrapper script</a></li>
+<li><p>2.apktool.jar 下载地址打开可以看到历史版本列表，可以选择最新版本的，此教程使用的版本为：2.2.3 下载成功重命名为apktool.jar.</p>
+</li>
+<li><p>3.将 apktool.jar 和 apktool 拷贝到 /usr/local/bin（需要 root 权限）</p>
+</li>
+</ul>
+<blockquote>
+<p>sudo cp apktool apktool.jar /usr/local/bin [此目录是 mac 中管理员可执行命令]</p>
+</blockquote>
+<ul>
+<li><p>4.修改这两个文件的权限: sudo chmod + x file名</p>
+</li>
+<li><p>5.现在就可以在终端运行 apktool 命令了</p>
+</li>
+</ul>
+<blockquote>
+<p>验证安装 apktool 是否安装成功的时候发现错误：<br>Error: Invalid or corrupt jarfile /usr/local/bin/apktool.jar</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-1ca922efdbc2dad7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>Google了一下，检测jar包是否正常的命令：</p>
+<blockquote>
+<p>java -jar jar包名</p>
+</blockquote>
+<p>报出同样的错误，删除原本 /usr/local/bin/ 目录下的文件，重新配置，获得成功：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-d82bc617b744483c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>问题二：dex2jar 需要授权：</p>
+</blockquote>
+<p>切换到 dex2jar 目录下，执行命令：chmod a+x *.sh</p>
+<p>注：否则直接执行会提示:</p>
+<p>d2j-dex2jar.sh: line 36: ./d2j_invoke.sh: Permission denied</p>
+<p>###反编译</p>
+<p>为了能够更好地串联整个过程也本着尊重版权的原则，我们写了一个简易的demo：</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/2539684-20b45148983d10c7.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p> 好的，下面就围绕这个demo进行展开吧～～</p>
+<p> 出于文件整理的考虑，我们将apk文件和授权完成的dex2jar放入同一目录下：</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/2539684-989b8bd7199b3ada.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>####源代码反编译</p>
+<p>思路：我们知道 android 的源代码是以 .dex 文件的形式存在的，也就是说我们要查看源码，我们需要将.dex -&gt; java 代码；但是目前还没有找到比较好的直接转换工具，所以我们套用原有套路:.dex -&gt; .jar-&gt;java源码；</p>
+<p>说干就干，执行命令：</p>
+<blockquote>
+<p>sh dex2jar-2.0/d2j-dex2jar.sh app-release.apk</p>
+</blockquote>
+<p>通过dex2jar我们获得以下文件：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-069d38e3715e4a15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>右击app-release-dex2jar.jar文件选择用JD-GUI打开查看源码即可，让我们来看看我们的成果吧：<br><img src="http://upload-images.jianshu.io/upload_images/2539684-0e2f86aeaeb07a43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>做到这里大家不知道有没有好奇，没毛病啊～～图片什么的都有啦，源代码也有啦，打开 .xml 文件一看，目瞪口呆：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-38dadf20b73c4f5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>所以咋们都资源反编译也就应运而生啦～～</p>
+<p>####资源反编译</p>
+<p>正如上面提到的，资源反编译针对的主要是 xml 资源文件，我们使用的工具也就是 apktool ,切换到上图目录下废话不多说来行命令压压惊：</p>
+<blockquote>
+<p>apktool d app-release.apk</p>
+</blockquote>
+<p>xml完美呈现：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-c8c9950826fb6f4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这个时候我们可以打开smali文件夹改些文本什么的，重新拿个证书打个包，就是一个添加了我们 tag 的 app 啦～～</p>
+<p>切换目录到demo下，执行命令</p>
+<blockquote>
+<p>apktool b app-release</p>
+</blockquote>
+<p>兴冲冲装到自己手机上，结果发现安装不了，原来是没有证书，没有条件就去创造下条件从AS中生成一个自己的证书，然后用该证书给咋们的app打个包就OK啦。</p>
+<p>执行命令：</p>
+<blockquote>
+<p> jarsigner -verbose -keystore android.keystore -signedjar app-release-1.apk app-release.apk android.keystore</p>
+</blockquote>
+<p> 效果如下：</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/2539684-02abcb9375674028.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<h3 id="加固"><a href="#加固" class="headerlink" title="加固"></a>加固</h3><p>好啦，我们成功破解所有套路之后，我们来看看如何反套路吧，目前市面上对代码进行混淆或者加固。本文选择运用加固技术对我们的app进行保护。如果需要加固助手的同学可以360官网下载到加固助手，另外它还需要注册账号，个人配置密钥证书和下载渠道，参考帮助手册进行操作即可。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-717f4f0484a01130.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>如果你看到这个界面那么咋们就可以开始加固打我们的渠道包啦，暂时我们只添加了腾讯应用宝、百度手机助手和360市场打包成功后我们可以获取每个渠道的app。</p>
+<p>下面我们还是用上面的方法对我们的渠道包进行反编译，我们会发现很安全因为整个逻辑根本就看不清楚啦～～</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-eea3b77b9f17dec2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>好啦，Android 攻防战到此结束，如果有朋友有更好玩的欢迎微博或者简书私信我偶～～</p>
+<p>参考文章：</p>
+<ul>
+<li><p><a href="http://blog.csdn.net/guolin_blog/article/details/49738023" target="_blank" rel="noopener">Android安全-反编译-郭霖</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/guolin_blog/article/details/50451259" target="_blank" rel="noopener">Android安全-混淆技术-郭霖</a></p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/b3bb4da64dc7" target="_blank" rel="noopener">反编译Mac实操参考</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/-Andorid-安全攻防战-反编译及加固[Mac版]/" data-id="cjkt10w3i0000slxz6i8zeosi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2017/Coder/Android-数据与存储" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/2017/Coder/Android-数据与存储/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/2539684-65cc3b43a39094e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="注意这些目录欧"></p>
+<p><a href="http://ox1aqdtfp.bkt.clouddn.com/Android%E6%95%B0%E6%8D%AE%E4%B8%8E%E5%AD%98%E5%82%A8.xmind" target="_blank" rel="noopener">xmind源文件下载</a></p>
+<p>相信部分做 Android 的朋友经常会对内存、内部存储、外部存储这些概念有点含糊不清，也经常对下面这些操作：</p>
+<ul>
+<li>一键清理</li>
+<li>清除数据</li>
+<li>清除缓存</li>
+</ul>
+<p>不太清楚从开发角度上代表的真正的意义。今天工作上遇到了需要一些缓存方面的问题，发现对这些概念理解并不是那么清晰，做下小结段友勿喷～～</p>
+<p>从英文上去理解</p>
+<ul>
+<li><p>内存 memory</p>
+<p>类似于电脑的内存条，是设备进行逻辑和算术预算的重要部件；</p>
+</li>
+<li><p>内部存储 Internal Storage</p>
+<p>如下图所示，手机里需要 root 才能够查看的部分 ：／data/data/包名／…一般用来保存应用的一些配置和登录信息。在 apk 卸载之后包名下的文件会跟着清掉；</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-dcb869bc12fe9695.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内部存储"></p>
+<ul>
+<li>外部存储 External Storage</li>
+</ul>
+<p>需要关注的常用的私有目录</p>
+<ul>
+<li>／Android／data／data／caches ：getExternalCacheDir()</li>
+<li>／Android／data／data／files:getExternalStorageDir()</li>
+</ul>
+<p>一般要将缓存的数据放在这两个目录下，在 apk 卸载之后这两个目录中的文件会跟着清掉；</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-aa8d7eeccd49e531.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="外部存储"></p>
+<p>这里提供一个文件操作的工具类库 <a href="https://github.com/Blankj/AndroidUtilCode" target="_blank" rel="noopener">AndroidUtilCode</a></p>
+<p>下面解析下三种操作：</p>
+<p>一键清理：清除 memory，杀死进程</p>
+<p>清除缓存：清除 app 缓存的页面数据</p>
+<p>清除数据：清除内部存储和外部存储中 files 和 caches 下的文件。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/Android-数据与存储/" data-id="cjkt10w3q0002slxzpuokssnv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2017/Coder/Android-通信" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/2017/Coder/Android-通信/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://www.jianshu.com/p/442a9e32ab52" target="_blank" rel="noopener">http://www.jianshu.com/p/442a9e32ab52</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/Android-通信/" data-id="cjkt10w3r0003slxzs2n894n0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2017/Coder/FloatingView" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/2017/Coder/FloatingView/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>判断当前运行程序<br><a href="http://www.jb51.net/article/81933.htm" target="_blank" rel="noopener">http://www.jb51.net/article/81933.htm</a></p>
+<p><a href="https://github.com/waylife/DemoCollections/tree/master/ViewDebugHelper" target="_blank" rel="noopener">https://github.com/waylife/DemoCollections/tree/master/ViewDebugHelper</a></p>
+<p><a href="https://github.com/jaredrummler/AndroidProcesses" target="_blank" rel="noopener">https://github.com/jaredrummler/AndroidProcesses</a></p>
+<p>权限适配<br><a href="http://blog.csdn.net/self_study/article/details/52859790" target="_blank" rel="noopener">http://blog.csdn.net/self_study/article/details/52859790</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/FloatingView/" data-id="cjkt10w3s0004slxzkz5vrc04" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2017/Coder/Listen1-版本1-0-0-动员" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/2017/Coder/Listen1-版本1-0-0-动员/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>同志们，晚上好～～<br>明天又要开始新的一周的工作啦！<br>本周双休和飞飞讨论下咋们项目这个版本的功能模块具体工作报告如下：</p>
+<ul>
+<li>版本的迭代计划意见上传至tower.im,大家有空可以看下有啥意见可以提提意见。</li>
+<li><p><a href="https://github.com/listenOne/Document/tree/master/listen1_1.0.0" target="_blank" rel="noopener"> 交互原型</a>飞飞已经完成大致框架，预计在下周三可以完成。在这之前大家有什么比较好的交互的点都可以提给飞飞，具体的建议提交方式因为tower.im不方便支持，所以暂时以<a href="https://github.com/listenOne/Document/issues" target="_blank" rel="noopener">github issue</a> 的形式提给飞飞,这个项目希望飞飞可以花时间维护下。</p>
+</li>
+<li><p>由于我们使用到的数据比较敏感，我对市面上常见的开源协议进行了调研，具体的理解在<a href="https://www.jianshu.com/c/90b9ffcef4e9" target="_blank" rel="noopener">Listen1</a>专栏中有，这里大家如果疑问欢迎沟通～～</p>
+</li>
+</ul>
+<p>本周任务建议：</p>
+<ul>
+<li>交互和UI设计</li>
+<li>后端／数据端：接口文档</li>
+<li>Android前端框架（网路，图片，音频播放器）</li>
+</ul>
+<p><a href="https://www.showdoc.cc/" target="_blank" rel="noopener">推荐一个接口文档书写平台，有什么更好的平台欢迎大家推荐</a></p>
+<p>另：本次开源项目本着大家一起成长的目的开启，体验全栈开发模式。希望大家可以通过博客记录咋们开发过程中的点点滴滴，这里在简书开了一个专栏：<a href="https://www.jianshu.com/c/90b9ffcef4e9" target="_blank" rel="noopener">Listen1</a>,希望大家可以通过总结和分享的方式获得更多的成长。</p>
+<p>最后祝大家平安夜快乐～～</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/Listen1-版本1-0-0-动员/" data-id="cjkt10w3t0005slxzgk1i93io" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2017/Coder/[AndroidDev-系列]-快速开发（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/2017/Coder/[AndroidDev-系列]-快速开发（一）/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>因为受到github上江清清的<a href="https://github.com/jiangqqlmj/FastDev4Android" target="_blank" rel="noopener">FastDev4Android</a>项目的启发,正巧又要负责公司新项目的启动，所以准备写个类似的库，争取做到write once,run AnyWhere(哈哈，开玩笑，方便以后快速开发啦～～)</p>
+<p>随着<code>Android</code>项目业务量的迅速增长，原本的项目结构已经远远不能满足我们的需求来。因为直线上涨的代码量让我们花在编译项目上的时间由原来的一分钟左右到现在的五分钟甚至更长的时间。虽然谷歌官方提出<code>instant run</code>的解决方案，但是由于种种问题，还是没能很好的解决这个问题。</p>
+<blockquote>
+<p>题外话：这里在网上看到有一种比较好玩的方案，通过编写<code>gradle</code>来计算每个<code>task</code>的执行时间，从而对整个项目的编译时间进行优化。有兴趣的朋友可以试下～～</p>
+</blockquote>
+<p><a href="http://blog.csdn.net/sbsujjbcy/article/details/50782830" target="_blank" rel="noopener">Gradle插件编写</a></p>
+<p>好吧，回到我们的主题：由于组件化采取的是在开发过程中将每一个业务模块都作为一个<code>application</code>，并伴随着一个壳工程，这样就大大缩减了我们开发时的编译时间；当项目上线的时候，只要将这些<code>application</code>变成第三方<code>Lib</code>，然后让壳工程依赖于这些<code>Libs</code>，进行打包，这样就完美的结局了编译时间上的问题。由于之前已经有大神总结了比较好的实践过程，这里就不赘述啦，直接看大神的文章吧～～</p>
+<p><a href="http://www.jianshu.com/p/186fa07fc48a" target="_blank" rel="noopener">Android组件化开发实践</a></p>
+<p>相信朋友们一定听过插件化这个概念，这里可以通过下面这篇文章稍稍科普下：</p>
+<p><a href="https://juejin.im/entry/577bae93d342d30057970e05" target="_blank" rel="noopener">Android 组件化和插件化开发</a></p>
+<p>下面来介绍下接下来我们要完成的项目的结构吧：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-9181f495f635ebdc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>通过图中我们可以看到，对我们来说比较重要的突破点就是：</p>
+<ul>
+<li>路由工程</li>
+</ul>
+<ul>
+<li>BaseLibrary</li>
+</ul>
+<p>其中，路由工程我们可以直接引用下<a href="https://github.com/mzule/ActivityRouter" target="_blank" rel="noopener">ActivityRouter</a>这个工程；</p>
+<p>接下来，就是根据我们的业务需要去完成最重要的baseLibrary啦～～<br>从图中我们可以看到，我们需要在接下来的日子里面完成：</p>
+<ul>
+<li><p>网络请求的封装</p>
+</li>
+<li><p>图片加载的封装</p>
+</li>
+<li><p>加密库的封装</p>
+</li>
+<li><p>UI的封装</p>
+</li>
+</ul>
+<p>…….</p>
+<p>不知道这里你是不是和我有着一样的疑问：github上有那么多现成的第三方框架，例如Square全家桶，facebook等(PS:移动端技术更新太过频繁啦，向大家推荐一个站可以看看最近出来哪些比较稳定的技术吧<a href="http://www.ctolib.com/cheatsheets-Android-ch.html" target="_blank" rel="noopener">Android 流行框架查速表</a>)，为什么还要封装自己的框架呢？</p>
+<p>实际上我们的封装也是建立在这些第三方库的基础上的，只是随着业务量的不断扩大，我们可能会切换项目所引用的第三方库，这个时候我们只需要更改自己的封装类就可以啦，是不是很方便。其实我也是借鉴stormzhang的观点的啦，有兴趣深入了解这样做的原因可以看看这篇文章，<a href="http://stormzhang.com/android/2016/05/08/how-to-choose-open-source-project/" target="_blank" rel="noopener">如何正确使用开源项目？</a></p>
+<p>好啦，接下来就让我们一起开启Android快速开发之旅吧，一起加油吧～～</p>
+<p>待会儿，在没开始之前，咋们还是要确立注意点规范，还有就是工具啦，工欲善其事，必先利其器嘛～～</p>
+<ul>
+<li><a href="https://github.com/Blankj/AndroidStandardDevelop#2-as%E8%A7%84%E8%8C%83" target="_blank" rel="noopener">安卓开发规范</a></li>
+<li>TODO:android开发工具篇</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/[AndroidDev-系列]-快速开发（一）/" data-id="cjkt10w3u0006slxzt48l1ysv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2017/Coder/[Android]自定义View(一)：坐标系" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/2017/Coder/[Android]自定义View(一)：坐标系/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android中view的绘制和动画效果的制作是常见的两大难点，前段时间正好在优化项目的时候做了一些动画。现在对于它们进行个归纳总结，如果有其他看法的同学欢迎给我留言，或者微博私信我～～</p>
+<p>以敝人粗浅的理解，Android中交互是通过手势触摸屏幕中的view而产生的一系列动作，那么在view过程中我们可以理解为在一个数学坐标系上去判断触碰点击的位置和view点关系；动画我们可以理解为让view在坐标系做坐标运算从而产生动画效果。所以，了解坐标系也就成了我们把握view点绘制，动画制作等一系列动作等基础。</p>
+<p>下面我们就一起探讨下Android中的哪些坐标系：</p>
+<p>在讨论这个问题之前我们需要明确两点：</p>
+<ol>
+<li><p>一般情况下，我们只关心我们应用开发人员可以操纵的区域，下面让我们一起看看android屏幕的大致划分吧:</p>
+<ul>
+<li>状态栏</li>
+<li>[ActionBar]</li>
+<li>应用布局区域</li>
+</ul>
+</li>
+</ol>
+<p>在这样一个前提下，我们应用开发人员可以操纵的区域分为两种情况：</p>
+<blockquote>
+<p>有ActionBar<br>在这种情况下，程序员可操纵区域的范围则是以ActionBar左下角为原点，水平向右为X轴正方向，垂直向下为Y轴正方向。如下图所示：</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-e32a77b1848a5283.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>无ActionBar，那么我们的标题栏也会包含在应用布局中，一般的做法是会用一个公用的布局来作为标题。程序员可操纵区域的范围则是以ActionBar左下角为原点，水平向右为X轴正方向，垂直向下为Y轴正方向。如下图所示：</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-217f1e59f198aa07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>具体原因可以通过查看源码得知，这里就不再赘述啦，感兴趣的朋友可以看下两篇博客：</p>
+<ul>
+<li><a href="http://blog.csdn.net/yanbober/article/details/45970721" target="_blank" rel="noopener"> Android应用setContentView与LayoutInflater加载解析机制源码分析</a></li>
+<li><a href="https://juejin.im/entry/577cedb1a3413100619a7dba" target="_blank" rel="noopener">Android View 理论基础之坐标系</a></li>
+</ul>
+<ol start="2">
+<li>View在屏幕中都是以矩形的形式存在的。</li>
+</ol>
+<p>好啦，在这两个前提的基础上，我们一起给坐标分分类吧：</p>
+<ol>
+<li><p>View的坐标系</p>
+<ul>
+<li><p>屏幕坐标</p>
+<p>以可操纵区域的左上角为原点，水平向右为X轴正方向，垂直向下为Y轴正方向。</p>
+</li>
+<li><p>视图坐标</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-07000603ee80334d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>以可操纵区域的左上角为原点，水平向右为X轴正方向，垂直向下为Y轴正方向。在这个时候View被视为一个矩形，通过API可以获得View的坐标：</p>
+<p>对应API：</p>
+<p>| View中的方法   | 含义    |<br>| ————- |————-|<br>| getTop()     |     获取View自身顶边到其父布局顶边的距离 |<br>| getLeft()     |     获取View自身左边到其父布局左边的距离|<br>| getRight()    |     获取View自身右边到其父布局左边的距离|<br>| getBottom()   |     获取View自身底边到其父布局顶边的距离|</p>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>| View中的方法       | 含义          | 
+| ------------- |-------------| 
+| getX()     |     在当前父View坐标系中对应的坐标X的值 |
+| getY()     |     在当前父View坐标系中对应的坐标Y的值|
+从Android3.0以后，引入transitionX和transitionY
+
+- X = transitionX + getLeft()
+- Y = transitionY + getTop()
+
+**注：这里的getLeft()和getTop()是不变的，当view在父View中移动是改变的是transitionX和transitionY的值，因此X和Y的值也会跟着改变**
+</code></pre><ol start="2">
+<li>触摸点的坐标系</li>
+</ol>
+<ul>
+<li><p>绝对坐标</p>
+<p>  触摸点在屏幕坐标的坐标值；具体如图所示：</p>
+<p>  <img src="http://upload-images.jianshu.io/upload_images/2539684-edf396eb49f1d2bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<pre><code>对应API：
+
+| View中的方法   | 含义          | 
+| ------------- |:-------------:| 
+| getRawX()     |     在屏幕坐标系中对应的坐标X的值 |
+| getRawY()     |     在屏幕坐标系中对应的坐标Y的值 |
+</code></pre><ul>
+<li><p>相对坐标</p>
+<p>  以当前View的左上角为坐标原点建立的坐标系，触摸点在此坐标系中对应的坐标值；具体如图所示：</p>
+<p>  <img src="http://upload-images.jianshu.io/upload_images/2539684-239debbef5d5c7cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<pre><code>对应API：
+
+| View中的方法       | 含义          | 
+| ------------- |:-------------:| 
+| getX()     |     在当前View坐标系中对应的坐标X的值 |
+| getY()     |     在当前View坐标系中对应的坐标Y的值|
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/[Android]自定义View(一)：坐标系/" data-id="cjkt10w3v0007slxzukp6mbaq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2017/Coder/利用Jenkins玩转Android自动打包发包" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/2017/Coder/利用Jenkins玩转Android自动打包发包/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://blog.csdn.net/mabeijianxi/article/details/52680283" target="_blank" rel="noopener">http://blog.csdn.net/mabeijianxi/article/details/52680283</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/利用Jenkins玩转Android自动打包发包/" data-id="cjkt10w3w0008slxzsysc5rj8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2017/Coder/华为-Mate-8---UnsatisfiedLinkError---&#34;-so-is-is-64-bit-instead-of-32-bit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/2017/Coder/华为-Mate-8---UnsatisfiedLinkError---"-so-is-is-64-bit-instead-of-32-bit/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://blog.csdn.net/ouyang_peng/article/details/51168072" target="_blank" rel="noopener">http://blog.csdn.net/ouyang_peng/article/details/51168072</a></p>
+<p><a href="https://corbt.com/posts/2015/09/18/mixing-32-and-64bit-dependencies-in-android.html" target="_blank" rel="noopener">https://corbt.com/posts/2015/09/18/mixing-32-and-64bit-dependencies-in-android.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/华为-Mate-8---UnsatisfiedLinkError---"-so-is-is-64-bit-instead-of-32-bit/" data-id="cjkt10w3y0009slxzhj1e0nxt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -108,6 +647,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -138,7 +682,23 @@
       <ul>
         
           <li>
-            <a href="/2018/08/13/hello-world/">Hello World</a>
+            <a href="/2018/08/13/2017/Coder/高仿得到-底部播放器/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/-Andorid-安全攻防战-反编译及加固[Mac版]/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/Android-数据与存储/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/Android-通信/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/FloatingView/">(no title)</a>
           </li>
         
       </ul>

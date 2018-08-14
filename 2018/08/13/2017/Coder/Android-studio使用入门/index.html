@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##基础设置1 cmd+alt+s进入设置界面，输入 encoding 设置默认字符集为UTF-8(千万别忘了，否则就坑队友啦～～)  2 设置主题，窗口大小，动画效果  修改主题  修改全局窗口字体，字号  窗口动画    3.修改menu或者toolBar  这里我是添加了创建class,fragment,activity的ToolBar   4.释放空包折叠  5.打开工程设置  禁用自动打">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/2017/Coder/Android-studio使用入门/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="##基础设置1 cmd+alt+s进入设置界面，输入 encoding 设置默认字符集为UTF-8(千万别忘了，否则就坑队友啦～～)  2 设置主题，窗口大小，动画效果  修改主题  修改全局窗口字体，字号  窗口动画    3.修改menu或者toolBar  这里我是添加了创建class,fragment,activity的ToolBar   4.释放空包折叠  5.打开工程设置  禁用自动打">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-514e6cacf8c39c60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-2fcbc20f84f7311e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-809a509e6fe71671.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-939640c737612f4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-8f1be1792c239e38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-92951e0fbde14538.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-24cea3286d2cb2d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-b9fc23f8f4edd632.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-cd4f14a56e197394.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-e5b5dcc075b38c11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-e99af54a18a1c35d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-98014f12c91999aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-4d5add49c9260456.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-28b9ea6b4fd5694f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-2e474c54614ad404.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-a90e4a09afda7e95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-173633b90bcb16dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-e2ad1c34f2760f3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-5022955f3baa1dca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-e9d1ab236e832dac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-d0ba47f594116806.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-1f2f761440d59c90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-8edfcf37355b600e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-e74b1bfe801ef3cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-4eaa71f4178d2463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-9130aeb1e1306796.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-67b351500260d808.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-7851f25865c018d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-aae44ab67245f49b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-c1e1714b9e46ac01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-e2b7b6039b6c84aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-6f0e3831185b5cd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-c1c21adb98301b1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-08-13T12:51:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="##基础设置1 cmd+alt+s进入设置界面，输入 encoding 设置默认字符集为UTF-8(千万别忘了，否则就坑队友啦～～)  2 设置主题，窗口大小，动画效果  修改主题  修改全局窗口字体，字号  窗口动画    3.修改menu或者toolBar  这里我是添加了创建class,fragment,activity的ToolBar   4.释放空包折叠  5.打开工程设置  禁用自动打">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2539684-514e6cacf8c39c60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2017/Coder/Android-studio使用入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/2017/Coder/Android-studio使用入门/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##基础设置<br>1 <code>cmd+alt+s</code>进入设置界面，输入 encoding 设置默认字符集为<code>UTF-8</code>(千万别忘了，否则就坑队友啦～～)</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-514e6cacf8c39c60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>2 设置主题，窗口大小，动画效果</p>
+<ul>
+<li><p>修改主题</p>
+</li>
+<li><p>修改全局窗口字体，字号</p>
+</li>
+<li><p>窗口动画</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-2fcbc20f84f7311e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>3.修改menu或者toolBar</p>
+<blockquote>
+<p>这里我是添加了创建class,fragment,activity的ToolBar</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-809a509e6fe71671.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>4.释放空包折叠</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-939640c737612f4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>5.打开工程设置</p>
+<ul>
+<li><p>禁用自动打开上次关闭工程 ,禁用退出提示</p>
+</li>
+<li><p>打开新项目提示方式</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-8f1be1792c239e38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>6.禁用自动检查更新</p>
+<ul>
+<li><p>取消as自动更新</p>
+</li>
+<li><p>消sdk自动更新</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-92951e0fbde14538.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>7.配置快捷键</p>
+<ul>
+<li><p>自定义快捷键</p>
+</li>
+<li><p>根据内容搜索快捷键</p>
+</li>
+<li><p>根据按键搜索快捷键</p>
+</li>
+<li><p>删除快捷键 </p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-24cea3286d2cb2d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>快捷键查询：</p>
+<p><a href="https://segmentfault.com/a/1190000006898515" target="_blank" rel="noopener">Android Studio常用快捷键汇总（mac的小伙伴们看过来)</a></p>
+<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Mac官方快捷键</a></p>
+<p>8.编辑器</p>
+<ul>
+<li><p>鼠标悬停显示文档</p>
+</li>
+<li><p>格式化&amp;导包提示</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-b9fc23f8f4edd632.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>9.显示行号，显示方法分隔线</p>
+<ul>
+<li><p>显示行号</p>
+</li>
+<li><p>显示方法分隔符</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-cd4f14a56e197394.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>10.代码折叠</p>
+<ul>
+<li>取消方法自动折叠</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-e5b5dcc075b38c11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>11.代码智能提示</p>
+<ul>
+<li><p>敲什么都提示</p>
+</li>
+<li><p>提示时间设置</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-e99af54a18a1c35d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>敲什么字符会提示，All(大小写全部符合)，None（不管大小写，符合就提示),(First letter)（第一个字符符合就OK，其他随意）。我这种脑残没记性的当然选择None。时间设置根据自己电脑性能.</p>
+</blockquote>
+<p>12.自动导包</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-98014f12c91999aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>Optimize imports on the fly：优化导包，格式化代码时会删掉多余的导包。Add unambiguous imports on the fly：敲代码时，敲简单类名就帮你把包导了。</p>
+<p>##代码风格设置</p>
+<p>1.创建个人代码样式配置</p>
+<blockquote>
+<p>估计是为了保护默认的代码样式配置，让用户把配置搞坏了也能一键还原，IDEA不允许修改默认的配置，需要用户创建配置才能进行修改。选择基于哪个主题的，然后Save As一份即可。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-4d5add49c9260456.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>2．修改代码字体</p>
+<blockquote>
+<p>强烈建议用Consolas字体，好看！！！</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-28b9ea6b4fd5694f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>3.修改控制台字体</p>
+<blockquote>
+<p>要改的话，得先把1那个地方的勾取消掉,默认android Logcat 每个级别的颜色都是一样的.建议修改</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-2e474c54614ad404.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>4.Logcat字体</p>
+<blockquote>
+<p>要改的话，得先把1那个地方的勾取消掉,默认android Logcat 每个级别的颜色都是一样的.建议修改</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-a90e4a09afda7e95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>5.修改注释位置</p>
+<blockquote>
+<p>禁用“语句堆一行”</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-173633b90bcb16dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>Comment at frist column：启用的话，注释符号就会在行首，否则就按照缩进来注释。<br>Control statement in one line：格式化代码的时候，会把些很短的语句合并成一行。这样影响代码可读性.</p>
+</blockquote>
+<p>6.对齐变量名</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-e2ad1c34f2760f3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>7.修改变量前后缀</p>
+<blockquote>
+<p>静态成员是s，普通成员是m，转换成成员变量的时候自动加上m,生成setter,getter的时候会忽视m,很好很强大.</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-5022955f3baa1dca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>8.取消Android Lint 检查</p>
+<blockquote>
+<p>一定程度加快速度吧,不过打开Android Lint会有一些android相关提示</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-e9d1ab236e832dac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>9.新建文件模板</p>
+<p>` /**      </p>
+<ul>
+<li>author: ${USER}     <ul>
+<li>created on: ${DATE} ${TIME}      </li>
+</ul>
+</li>
+<li>description:<br>*/<br>`<br><img src="http://upload-images.jianshu.io/upload_images/2539684-d0ba47f594116806.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+<p>10.修改新建文件文件头</p>
+<blockquote>
+<p>每次建新类,会加上这样的头信息<br><img src="http://upload-images.jianshu.io/upload_images/2539684-1f2f761440d59c90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</blockquote>
+<blockquote>
+<p>上图就是通用的文件头，框住的地方是你系统的用户名，想个性化的话，可以改这里，至于哪里引用这个文件头的呢，就在隔壁<br><img src="http://upload-images.jianshu.io/upload_images/2539684-8edfcf37355b600e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</blockquote>
+<p>11.自己定义Live Templates</p>
+<blockquote>
+<p>模板定义,方便开发,减少重复代码</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-e74b1bfe801ef3cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##工具篇</p>
+<p>1.添加管理插件</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-4eaa71f4178d2463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>1)    从远程仓库获取插件<br>2)    从本地仓库获取插件</p>
+<p>2.Svn添加移除项目</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-9130aeb1e1306796.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>3.配置Svn安装路径</p>
+<p>a)可以自己是自己下载的Subversion SVN的svn.exe</p>
+<p>b)可以是Visual SVN里面的svn.exe</p>
+<p>c)可以是TortoiseSVN里面的svn.exe</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-67b351500260d808.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>4.配置git安装路径</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-7851f25865c018d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>5.配置Gradle安装路径,离线模式,本地Gradle仓库</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-aae44ab67245f49b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>6.配置maven仓库路径</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-c1e1714b9e46ac01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>7.项目自动编译</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-e2b7b6039b6c84aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>8.Gradle Task超时时间</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-6f0e3831185b5cd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>9.优化-取消同步</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-c1c21adb98301b1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##AndroidStudio奇淫异巧</p>
+<ul>
+<li><p>上面的这些设置我已经帮各位设置好，放在这个目录下啦，各位只要<code>import settings</code>,下载地址：<a href="https://github.com/MrLeion/MacTools/blob/master/AndroidStudio/settings.jar" target="_blank" rel="noopener">setting.jar</a></p>
+</li>
+<li><p>mac多行编辑</p>
+</li>
+</ul>
+<blockquote>
+<p>ctrl+G</p>
+</blockquote>
+<blockquote>
+<p>shift+&lt;/&gt; 选中单个字母</p>
+</blockquote>
+<blockquote>
+<p>shift+command+&lt;/&gt; 选中整行</p>
+</blockquote>
+<blockquote>
+<p>shift+alt+&lt;/&gt; 选中单个单词</p>
+</blockquote>
+<ul>
+<li><p>mac插件集合</p>
+<ul>
+<li><p>ButterKnife</p>
+</li>
+<li><p>GsonFormat</p>
+</li>
+<li><p>Selector</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>资源下载站</p>
+<p><a href="https://developer.android.google.cn/index.html" target="_blank" rel="noopener">Google中国开发官网</a></p>
+<p><a href="http://tools.android-studio.org/index.php" target="_blank" rel="noopener">Android Studio中文社区</a></p>
+<p><a href="http://ask.android-studio.org/?/explore/" target="_blank" rel="noopener">Android Studio问答社区</a></p>
+<p><a href="http://www.androiddevtools.cn/" target="_blank" rel="noopener">Android Studio开发者工具下载</a></p>
+</li>
+</ul>
+<ul>
+<li>参考资料</li>
+</ul>
+<p><a href="http://stormzhang.com/devtools/2015/06/17/android-studio-all/" target="_blank" rel="noopener">Androidstudio快速入门</a></p>
+<p><a href="https://developer.android.google.cn/studio/index.html" target="_blank" rel="noopener">Android studio官方权威指南</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/Android-studio使用入门/" data-id="cjkt10w4p000sslxzutcxls0d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/08/13/2017/行走吃货的日常/玩转信用卡/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/13/2017/Coder/Github-使用指南/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/高仿得到-底部播放器/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/-Andorid-安全攻防战-反编译及加固[Mac版]/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/Android-数据与存储/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/Android-通信/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/FloatingView/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

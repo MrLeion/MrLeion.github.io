@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="xmind源文件下载 相信部分做 Android 的朋友经常会对内存、内部存储、外部存储这些概念有点含糊不清，也经常对下面这些操作：  一键清理 清除数据 清除缓存  不太清楚从开发角度上代表的真正的意义。今天工作上遇到了需要一些缓存方面的问题，发现对这些概念理解并不是那么清晰，做下小结段友勿喷～～ 从英文上去理解  内存 memory 类似于电脑的内存条，是设备进行逻辑和算术预算的重要部件；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/2017/Coder/Android-数据与存储/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="xmind源文件下载 相信部分做 Android 的朋友经常会对内存、内部存储、外部存储这些概念有点含糊不清，也经常对下面这些操作：  一键清理 清除数据 清除缓存  不太清楚从开发角度上代表的真正的意义。今天工作上遇到了需要一些缓存方面的问题，发现对这些概念理解并不是那么清晰，做下小结段友勿喷～～ 从英文上去理解  内存 memory 类似于电脑的内存条，是设备进行逻辑和算术预算的重要部件；">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-65cc3b43a39094e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-dcb869bc12fe9695.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-aa8d7eeccd49e531.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-08-13T12:51:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="xmind源文件下载 相信部分做 Android 的朋友经常会对内存、内部存储、外部存储这些概念有点含糊不清，也经常对下面这些操作：  一键清理 清除数据 清除缓存  不太清楚从开发角度上代表的真正的意义。今天工作上遇到了需要一些缓存方面的问题，发现对这些概念理解并不是那么清晰，做下小结段友勿喷～～ 从英文上去理解  内存 memory 类似于电脑的内存条，是设备进行逻辑和算术预算的重要部件；">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2539684-65cc3b43a39094e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2017/Coder/Android-数据与存储" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/2017/Coder/Android-数据与存储/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/2539684-65cc3b43a39094e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="注意这些目录欧"></p>
+<p><a href="http://ox1aqdtfp.bkt.clouddn.com/Android%E6%95%B0%E6%8D%AE%E4%B8%8E%E5%AD%98%E5%82%A8.xmind" target="_blank" rel="noopener">xmind源文件下载</a></p>
+<p>相信部分做 Android 的朋友经常会对内存、内部存储、外部存储这些概念有点含糊不清，也经常对下面这些操作：</p>
+<ul>
+<li>一键清理</li>
+<li>清除数据</li>
+<li>清除缓存</li>
+</ul>
+<p>不太清楚从开发角度上代表的真正的意义。今天工作上遇到了需要一些缓存方面的问题，发现对这些概念理解并不是那么清晰，做下小结段友勿喷～～</p>
+<p>从英文上去理解</p>
+<ul>
+<li><p>内存 memory</p>
+<p>类似于电脑的内存条，是设备进行逻辑和算术预算的重要部件；</p>
+</li>
+<li><p>内部存储 Internal Storage</p>
+<p>如下图所示，手机里需要 root 才能够查看的部分 ：／data/data/包名／…一般用来保存应用的一些配置和登录信息。在 apk 卸载之后包名下的文件会跟着清掉；</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-dcb869bc12fe9695.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内部存储"></p>
+<ul>
+<li>外部存储 External Storage</li>
+</ul>
+<p>需要关注的常用的私有目录</p>
+<ul>
+<li>／Android／data／data／caches ：getExternalCacheDir()</li>
+<li>／Android／data／data／files:getExternalStorageDir()</li>
+</ul>
+<p>一般要将缓存的数据放在这两个目录下，在 apk 卸载之后这两个目录中的文件会跟着清掉；</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-aa8d7eeccd49e531.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="外部存储"></p>
+<p>这里提供一个文件操作的工具类库 <a href="https://github.com/Blankj/AndroidUtilCode" target="_blank" rel="noopener">AndroidUtilCode</a></p>
+<p>下面解析下三种操作：</p>
+<p>一键清理：清除 memory，杀死进程</p>
+<p>清除缓存：清除 app 缓存的页面数据</p>
+<p>清除数据：清除内部存储和外部存储中 files 和 caches 下的文件。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/Android-数据与存储/" data-id="cjkt10w3q0002slxzpuokssnv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/08/13/2017/Coder/-Andorid-安全攻防战-反编译及加固[Mac版]/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/13/2017/Coder/Android-通信/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/高仿得到-底部播放器/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/-Andorid-安全攻防战-反编译及加固[Mac版]/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/Android-数据与存储/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/Android-通信/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/FloatingView/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

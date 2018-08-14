@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="因为受到github上江清清的FastDev4Android项目的启发,正巧又要负责公司新项目的启动，所以准备写个类似的库，争取做到write once,run AnyWhere(哈哈，开玩笑，方便以后快速开发啦～～) 随着Android项目业务量的迅速增长，原本的项目结构已经远远不能满足我们的需求来。因为直线上涨的代码量让我们花在编译项目上的时间由原来的一分钟左右到现在的五分钟甚至更长的时间。虽">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/2017/Coder/[AndroidDev-系列]-快速开发（一）/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="因为受到github上江清清的FastDev4Android项目的启发,正巧又要负责公司新项目的启动，所以准备写个类似的库，争取做到write once,run AnyWhere(哈哈，开玩笑，方便以后快速开发啦～～) 随着Android项目业务量的迅速增长，原本的项目结构已经远远不能满足我们的需求来。因为直线上涨的代码量让我们花在编译项目上的时间由原来的一分钟左右到现在的五分钟甚至更长的时间。虽">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2539684-9181f495f635ebdc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-08-13T12:51:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="因为受到github上江清清的FastDev4Android项目的启发,正巧又要负责公司新项目的启动，所以准备写个类似的库，争取做到write once,run AnyWhere(哈哈，开玩笑，方便以后快速开发啦～～) 随着Android项目业务量的迅速增长，原本的项目结构已经远远不能满足我们的需求来。因为直线上涨的代码量让我们花在编译项目上的时间由原来的一分钟左右到现在的五分钟甚至更长的时间。虽">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2539684-9181f495f635ebdc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2017/Coder/[AndroidDev-系列]-快速开发（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/13/2017/Coder/[AndroidDev-系列]-快速开发（一）/" class="article-date">
+  <time datetime="2018-08-13T12:51:16.000Z" itemprop="datePublished">2018-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>因为受到github上江清清的<a href="https://github.com/jiangqqlmj/FastDev4Android" target="_blank" rel="noopener">FastDev4Android</a>项目的启发,正巧又要负责公司新项目的启动，所以准备写个类似的库，争取做到write once,run AnyWhere(哈哈，开玩笑，方便以后快速开发啦～～)</p>
+<p>随着<code>Android</code>项目业务量的迅速增长，原本的项目结构已经远远不能满足我们的需求来。因为直线上涨的代码量让我们花在编译项目上的时间由原来的一分钟左右到现在的五分钟甚至更长的时间。虽然谷歌官方提出<code>instant run</code>的解决方案，但是由于种种问题，还是没能很好的解决这个问题。</p>
+<blockquote>
+<p>题外话：这里在网上看到有一种比较好玩的方案，通过编写<code>gradle</code>来计算每个<code>task</code>的执行时间，从而对整个项目的编译时间进行优化。有兴趣的朋友可以试下～～</p>
+</blockquote>
+<p><a href="http://blog.csdn.net/sbsujjbcy/article/details/50782830" target="_blank" rel="noopener">Gradle插件编写</a></p>
+<p>好吧，回到我们的主题：由于组件化采取的是在开发过程中将每一个业务模块都作为一个<code>application</code>，并伴随着一个壳工程，这样就大大缩减了我们开发时的编译时间；当项目上线的时候，只要将这些<code>application</code>变成第三方<code>Lib</code>，然后让壳工程依赖于这些<code>Libs</code>，进行打包，这样就完美的结局了编译时间上的问题。由于之前已经有大神总结了比较好的实践过程，这里就不赘述啦，直接看大神的文章吧～～</p>
+<p><a href="http://www.jianshu.com/p/186fa07fc48a" target="_blank" rel="noopener">Android组件化开发实践</a></p>
+<p>相信朋友们一定听过插件化这个概念，这里可以通过下面这篇文章稍稍科普下：</p>
+<p><a href="https://juejin.im/entry/577bae93d342d30057970e05" target="_blank" rel="noopener">Android 组件化和插件化开发</a></p>
+<p>下面来介绍下接下来我们要完成的项目的结构吧：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2539684-9181f495f635ebdc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>通过图中我们可以看到，对我们来说比较重要的突破点就是：</p>
+<ul>
+<li>路由工程</li>
+</ul>
+<ul>
+<li>BaseLibrary</li>
+</ul>
+<p>其中，路由工程我们可以直接引用下<a href="https://github.com/mzule/ActivityRouter" target="_blank" rel="noopener">ActivityRouter</a>这个工程；</p>
+<p>接下来，就是根据我们的业务需要去完成最重要的baseLibrary啦～～<br>从图中我们可以看到，我们需要在接下来的日子里面完成：</p>
+<ul>
+<li><p>网络请求的封装</p>
+</li>
+<li><p>图片加载的封装</p>
+</li>
+<li><p>加密库的封装</p>
+</li>
+<li><p>UI的封装</p>
+</li>
+</ul>
+<p>…….</p>
+<p>不知道这里你是不是和我有着一样的疑问：github上有那么多现成的第三方框架，例如Square全家桶，facebook等(PS:移动端技术更新太过频繁啦，向大家推荐一个站可以看看最近出来哪些比较稳定的技术吧<a href="http://www.ctolib.com/cheatsheets-Android-ch.html" target="_blank" rel="noopener">Android 流行框架查速表</a>)，为什么还要封装自己的框架呢？</p>
+<p>实际上我们的封装也是建立在这些第三方库的基础上的，只是随着业务量的不断扩大，我们可能会切换项目所引用的第三方库，这个时候我们只需要更改自己的封装类就可以啦，是不是很方便。其实我也是借鉴stormzhang的观点的啦，有兴趣深入了解这样做的原因可以看看这篇文章，<a href="http://stormzhang.com/android/2016/05/08/how-to-choose-open-source-project/" target="_blank" rel="noopener">如何正确使用开源项目？</a></p>
+<p>好啦，接下来就让我们一起开启Android快速开发之旅吧，一起加油吧～～</p>
+<p>待会儿，在没开始之前，咋们还是要确立注意点规范，还有就是工具啦，工欲善其事，必先利其器嘛～～</p>
+<ul>
+<li><a href="https://github.com/Blankj/AndroidStandardDevelop#2-as%E8%A7%84%E8%8C%83" target="_blank" rel="noopener">安卓开发规范</a></li>
+<li>TODO:android开发工具篇</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/13/2017/Coder/[AndroidDev-系列]-快速开发（一）/" data-id="cjkt10w3u0006slxzt48l1ysv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/08/13/2017/Coder/Listen1-版本1-0-0-动员/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/13/2017/Coder/[Android]自定义View(一)：坐标系/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/高仿得到-底部播放器/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/-Andorid-安全攻防战-反编译及加固[Mac版]/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/Android-数据与存储/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/Android-通信/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/2017/Coder/FloatingView/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
